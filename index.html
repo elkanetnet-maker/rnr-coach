@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тренер по акробатическому рок-н-роллу | Личный сайт</title>
+    <style>
+        /* Плавная прокрутка при клике на пункты меню */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #222;
+            background-color: #f8f9fa;
+        }
+
+        /* Навигационное меню (<nav>) */
+        header {
+            background-color: #111827;
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            color: #e5e7eb;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #f43f5e;
+        }
+
+        /* Общие стили секций */
+        section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 25px;
+            color: #111827;
+            border-left: 5px solid #f43f5e;
+            padding-left: 15px;
+        }
+
+        /* Главный экран */
+        .hero {
+            background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+            color: #fff;
+            max-width: 100%;
+            padding: 90px 20px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #d1d5db;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #f43f5e;
+            color: #fff;
+            padding: 14px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background-color: #e11d48;
+        }
+
+        /* Раздел "Обо мне" */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-photo img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            object-fit: cover;
+            aspect-ratio: 3/4;
+            background-color: #ddd;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+        }
+
+        .achievements {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background-color: #ffe4e6;
+            color: #be123c;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        /* Галерея изображений (CSS Grid) */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+            background-color: #ddd;
+        }
+
+        .gallery-item img:hover {
+            transform: scale(1.03);
+        }
+
+        /* Форма обратной связи */
+        .contact-form {
+            background: #fff;
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #f43f5e;
+        }
+
+        /* Футер сайта (<footer>) */
+        footer {
+            background-color: #111827;
+            color: #9ca3af;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .footer-contacts {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .footer-contacts a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .footer-contacts a:hover {
+            color: #f43f5e;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #1f2937;
+            border-radius: 50%;
+            color: #fff;
+            transition: background 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: #f43f5e;
+        }
+
+        /* Адаптивность под мобильные устройства */
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            nav ul {
+                gap: 15px;
+                margin-top: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Шапка и навигационное меню -->
+    <header>
+        <div class="nav-container">
+            <a href="#home" class="logo">
+                <!-- Адаптивная SVG-иконка (требование №2) -->
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f43f5e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                </svg>
+                <span>ROCK'N'ROLL COACH</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#home">Главная</a></li>
+                    <li><a href="#about">Обо мне</a></li>
+                    <li><a href="#gallery">Галерея</a></li>
+                    <li><a href="#contacts">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Раздел 1: Главная -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Тренер по акробатическому рок-н-роллу</h1>
+            <p>Энергия танца, акробатика и чемпионский характер. Индивидуальные и групповые тренировки для детей и взрослых.</p>
+            <a href="#contacts" class="btn">Записаться на пробную тренировку</a>
+        </div>
+    </section>
+    <!-- Раздел 2: Обо мне + Видео выступления -->
+    <section id="about">
+        <h2>Обо мне</h2>
+        <div class="about-grid">
+            <div class="about-photo">
+                <img src="main-photo.jpg" alt="Фото тренера по акробатическому рок-н-роллу">
+            </div>
+            <div class="about-text">
+                <p>Привет! Я действующий тренер по акробатическому рок-н-роллу и <strong>Кандидат в мастера спорта (КМС)</strong>. Этот яркий, динамичный и зрелищный вид спорта стал частью моей жизни более 10 лет назад.</p>
+                <p>За годы спортивной карьеры я прошла путь от первых шагов в зале до всероссийских и международных турниров. Мне довелось выступать на крупнейших площадках во многих городах России, а также представлять нашу страну на соревнованиях во Франции.</p>
+                <p>Сегодня я передаю свой опыт ученикам: помогаю развить координацию, силу, гибкость, чувство ритма и уверенность на паркете. На моих тренировках мы уделяем внимание как технике основного хода, так и безопасной постановке акробатических элементов.</p>
+                <div class="achievements">
+                    <span class="badge">КМС по акробатическому рок-н-роллу</span>
+                    <span class="badge">10+ лет в спорте</span>
+                    <span class="badge">Участница турниров в РФ и Франции</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Видео внутри раздела "Обо мне" -->
+        <div style="margin-top: 45px;">
+            <h3 style="font-size: 1.4rem; margin-bottom: 18px; color: #111827;">Мои выступления на паркете</h3>
+            <div style="max-width: 800px; margin: 0 auto;">
+                <video controls style="width: 100%; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.12); background-color: #000;">
+                    <source src="video.mp4" type="video/mp4">
+                    Ваш браузер не поддерживает воспроизведение видео.
+                </video>
+            </div>
+        </div>
+    </section>
+  <!-- Раздел 3: Галерея изображений (CSS Grid) -->
+    <section id="gallery">
+        <h2>Галерея выступлений</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="gallery-1.jpg" alt="Выступление на соревнованиях">
+            </div>
+            <div class="gallery-item">
+                <img src="gallery-2.jpg" alt="Турнир во Франции">
+            </div>
+            <div class="gallery-item">
+                <img src="gallery-3.jpg" alt="Акробатический элемент">
+            </div>
+            <div class="gallery-item">
+                <img src="gallery-4.jpg" alt="Команда и награждение">
+            </div>
+        </div>
+    </section>
+    <!-- Раздел 4: Виды тренировок и выездные соревнования -->
+    <section id="training">
+        <h2>Виды тренировок</h2>
+        
+        <!-- Карточки форматов тренировок с фотографиями -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-bottom: 50px;">
+            
+            <div style="background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.06); display: flex; flex-direction: column;">
+                <img src="train-1.jpg" alt="Начальная подготовка" style="width: 100%; height: 200px; object-fit: cover; background-color: #ddd;">
+                <div style="padding: 20px; border-top: 4px solid #f43f5e; flex-grow: 1;">
+                    <h3 style="margin-bottom: 10px; color: #111827;">Начальная подготовка (5–8 лет)</h3>
+                    <p style="color: #4b5563; font-size: 0.95rem;">Постановка базового хода рок-н-ролла, развитие координации, растяжки и чувства ритма. Первые шаги на паркете без стресса.</p>
+                </div>
+            </div>
+
+            <div style="background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.06); display: flex; flex-direction: column;">
+                <img src="train-2.jpg" alt="Спортивные пары и формейшн" style="width: 100%; height: 200px; object-fit: cover; background-color: #ddd;">
+                <div style="padding: 20px; border-top: 4px solid #f43f5e; flex-grow: 1;">
+                    <h3 style="margin-bottom: 10px; color: #111827;">Спортивные пары и формейшн</h3>
+                    <p style="color: #4b5563; font-size: 0.95rem;">Углубленная техника, отработка синхронности, безопасная постановка акробатических элементов и подготовка программ к турнирам.</p>
+                </div>
+            </div>
+
+            <div style="background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.06); display: flex; flex-direction: column;">
+                <img src="train-3.jpg" alt="Индивидуальные тренировки" style="width: 100%; height: 200px; object-fit: cover; background-color: #ddd;">
+                <div style="padding: 20px; border-top: 4px solid #f43f5e; flex-grow: 1;">
+                    <h3 style="margin-bottom: 10px; color: #111827;">Индивидуальные тренировки</h3>
+                    <p style="color: #4b5563; font-size: 0.95rem;">Персональный разбор техники, работа над ошибками, повышение выносливости и точечная подготовка к сдаче на спортивные разряды.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Подраздел: Выездные соревнования и сборы -->
+        <h2>Выездные соревнования и сборы</h2>
+        <p style="color: #4b5563; margin-bottom: 25px; font-size: 1.05rem;">
+            Акробатический рок-н-ролл — это яркая соревновательная жизнь и командный дух. Вместе с учениками мы регулярно выезжаем на крупные старты и тренировочные интенсивы.
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px;">
+            
+            <div style="background: #111827; color: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.12); display: flex; flex-direction: column;">
+                <img src="travel-russia.jpg" alt="Соревнования в России" style="width: 100%; height: 210px; object-fit: cover; background-color: #374151;">
+                <div style="padding: 20px; border-top: 4px solid #f43f5e; flex-grow: 1;">
+                    <h3 style="color: #fff; margin-bottom: 8px;">Соревнования в России</h3>
+                    <p style="color: #d1d5db; font-size: 0.95rem;">Регулярные выезды на чемпионаты, первенства и всероссийские турниры в Москве, Санкт-Петербурге, Казани, Сочи и других городах.</p>
+                </div>
+            </div>
+
+            <div style="background: #111827; color: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.12); display: flex; flex-direction: column;">
+                <img src="travel-world.jpg" alt="Соревнования по миру" style="width: 100%; height: 210px; object-fit: cover; background-color: #374151;">
+                <div style="padding: 20px; border-top: 4px solid #f43f5e; flex-grow: 1;">
+                    <h3 style="color: #fff; margin-bottom: 8px;">Соревнования по миру</h3>
+                    <p style="color: #d1d5db; font-size: 0.95rem;">Международный соревновательный опыт, включая выступления на крупных европейских площадках и турнирах во Франции.</p>
+                </div>
+            </div>
+
+            <div style="background: #111827; color: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.12); display: flex; flex-direction: column;">
+                <img src="travel-camp.jpg" alt="Спортивные сборы" style="width: 100%; height: 210px; object-fit: cover; background-color: #374151;">
+                <div style="padding: 20px; border-top: 4px solid #f43f5e; flex-grow: 1;">
+                    <h3 style="color: #fff; margin-bottom: 8px;">Спортивные сборы</h3>
+                    <p style="color: #d1d5db; font-size: 0.95rem;">Летние и зимние выездные интенсивы: усиленная ОФП, постановка новых программ, акробатика и сплочение команды.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Раздел 5: Форма обратной связи (<form>) -->
+    <section id="contacts">
+        <h2>Записаться на тренировку</h2>
+        <form class="contact-form" onsubmit="alert('Спасибо! Ваша заявка отправлена.'); return false;">
+            <div class="form-group">
+                <label for="name">Ваше имя:</label>
+                <input type="text" id="name" name="name" placeholder="Введите ваше имя" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Ваш Email:</label>
+                <input type="email" id="email" name="email" placeholder="example@mail.ru" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Сообщение (возраст ученика, уровень подготовки):</label>
+                <textarea id="message" name="message" rows="4" placeholder="Напишите ваш вопрос или удобное время для связи..." required></textarea>
+            </div>
+            <button type="submit" class="btn">Отправить заявку</button>
+        </form>
+    </section>
+
+    <!-- Футер сайта (<footer>) -->
+    <footer>
+        <div class="footer-contacts">
+            <a href="tel:+79991234567">+7 (911) 981-94-50</a>
+            <a href="mailto:coach.rnr@mail.ru">coach.rnr@mail.ru</a>
+        </div>
+
+        <div class="social-links">
+            <a href="https://vk.com" target="_blank" aria-label="ВКонтакте">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M13.162 18.994c.609 0 .858-.406.851-.915-.031-1.917.714-2.949 2.059-1.604 1.488 1.488 1.796 2.519 3.603 2.519h3.2c.808 0 1.126-.26 1.126-.668 0-.863-1.421-2.386-2.625-3.504-1.686-1.565-1.765-1.602-.313-3.486 1.801-2.339 4.157-5.336 2.073-5.336h-3.981c-.772 0-.828.435-1.103 1.083-.995 2.347-2.886 5.387-3.604 4.922-.751-.485-.407-2.406-.35-5.261.015-.754.011-1.271-1.141-1.539-.629-.145-1.241-.205-1.809-.205-2.273 0-3.841.953-2.95 1.119 1.571.293 1.42 3.692 1.054 5.16-.638 2.556-3.036-2.024-4.035-4.305-.241-.548-.315-.974-1.175-.974h-3.255c-.492 0-.787.16-.787.516 0 .602 2.96 6.72 5.786 9.77 2.756 2.975 5.48 2.708 7.376 2.708z"/>
+                </svg>
+            </a>
+            <a href="https://t.me" target="_blank" aria-label="Telegram">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                </svg>
+            </a>
+        </div>
+
+        <p>&copy; 2026 Тренер по акробатическому рок-н-роллу. Все права защищены.</p>
+    </footer>
+
+</body>
+</html>
